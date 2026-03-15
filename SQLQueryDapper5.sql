@@ -1,0 +1,10 @@
+﻿CREATE TABLE CommentLikes
+(
+    Id        UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    CreatedAt DATETIME         NOT NULL DEFAULT GETDATE(),
+    CommentId UNIQUEIDENTIFIER NOT NULL,
+    UserId    UNIQUEIDENTIFIER NOT NULL,
+    FOREIGN KEY (CommentId) REFERENCES Comments (Id),
+    FOREIGN KEY (UserId)    REFERENCES Users (Id),
+    UNIQUE (CommentId, UserId)
+);
